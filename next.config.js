@@ -9,4 +9,8 @@ module.exports = {
   typescript: {
     ignoreBuildErrors: true,
   },
+
+  experimental: {
+    concurrentFeatures: true,
+  },
 }

@@ -1,11 +1,18 @@
 import Layout from '@components/layouts/Layout'
-import { getNextStaticProps, is404 } from '@faustjs/next'
-import { GetStaticPropsContext } from 'next'
+import { getNextServerSideProps, is404 } from '@faustjs/next'
+import { GetServerSidePropsContext } from 'next'
 import { client } from '@client'
 import styles from '@styles/modules/Post.module.css'
-import { CategoryNav, MovePost } from '@components/includes'
+import { CategoryNav } from '@components/includes'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 
+const MovePost = dynamic(
+  () => import('@components/includes/MovePost'), {   
+    suspense: true,
+  }
+)
 
 export default function Page() {
   const { usePost } = client
@@ -14,7 +21,7 @@ export default function Page() {
   return (
     <>
       <Layout
-        title={post?.title}
+        title={post?.title()}
       >        
         <CategoryNav />
 
@@ -34,23 +41,18 @@ export default function Page() {
           </div>
         </article>
         
-        <MovePost />
+        <Suspense fallback={`loading`}>
+          <MovePost />
+        </Suspense>
       </Layout>
     </>
   )
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
-  return getNextStaticProps(context, {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  return getNextServerSideProps(context, {
     Page,
     client,
     notFound: await is404(context, { client }),
   })
-}
-
-export function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: 'blocking',
-  }
 }

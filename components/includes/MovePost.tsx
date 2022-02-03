@@ -3,7 +3,6 @@ import { client } from '@client'
 import { useRouter } from 'next/router'
 import styles from '@styles/modules/MovePost.module.css'
 import btoa from 'btoa'
-import useSWR from 'swr'
 
 export default function MovePost() {
   const { usePost } = client
@@ -11,14 +10,7 @@ export default function MovePost() {
   const { query = {} } = useRouter()
   const { categorySlug } = query
   const { posts } = client.useQuery()
-  //const currentPaginationCursor = btoa( `arrayconnection:${post.databaseId}` )
-  const { data, error } = useSWR(btoa(`arrayconnection:${post.databaseId}`), 
-    {
-      revalidateOnMount: true
-    }
-  )
-  
-  const currentPaginationCursor = data
+  const currentPaginationCursor = btoa( `arrayconnection:${post.databaseId}` )
 
   const previous = posts({
     first: 1,
@@ -31,9 +23,6 @@ export default function MovePost() {
     after: currentPaginationCursor,
     where: { categoryName: `${categorySlug}` },
   }).nodes[0]?.slug
-
-  if (error) <p>Loading failed...</p>
-  if (!currentPaginationCursor) <p>Loading...</p>
 
   return (
     <nav className={styles.move}>
