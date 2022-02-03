@@ -12,13 +12,13 @@ export default function MovePost() {
   const { categorySlug } = query
   const { posts } = client.useQuery()
   //const currentPaginationCursor = btoa( `arrayconnection:${post.databaseId}` )
-  const { data, error } = useSWR(`arrayconnection:${post.databaseId}`, 
+  const { data, error } = useSWR(btoa(`arrayconnection:${post.databaseId}`), 
     {
       revalidateOnMount: true
     }
   )
   
-  const currentPaginationCursor = btoa(data)
+  const currentPaginationCursor = data
 
   const previous = posts({
     first: 1,
