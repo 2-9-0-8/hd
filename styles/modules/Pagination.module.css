@@ -1,0 +1,9 @@
+.pagination {
+  margin-top: var(--space-x-small);
+
+  & ul {
+    display: flex;
+    gap: var(--space-xx-small);
+    justify-content: center;
+  }
+}

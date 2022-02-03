@@ -1,0 +1,136 @@
+:root {
+  --space: 1rem;
+  --space-xxx-small: calc(0.5 * var(--space));
+  --space-xx-small: calc(1 * var(--space));
+  --space-x-small: calc(2 * var(--space));
+  --space-small: calc(4 * var(--space));
+  --space-medium: calc(8 * var(--space));
+  --space-large: calc(16 * var(--space));
+
+  --main-bg-colour: #fff;
+
+  --main-text-colour: #000;
+  --secondary-text-colour: ;
+
+  --x-small-text-size: 0.6875rem;
+  --small-text-size: 0.875rem;
+
+  --main-link-colour: blue;
+  --main-link-hover-colour: #000;
+
+  --design-green: #5A8216;
+  --grey-1: rgba(175 175 175 / 1);
+}
+
+body {
+  background-color: var(--main-bg-colour);
+  color: var(--main-text-colour);
+  font-family: 'Sen', sans-serif;
+
+  & ::selection {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  margin: auto;
+  max-width: calc(1040px + (var(--space-x-small) * 2));
+  padding: 0 var(--space-xx-small) 0 var(--space-xx-small);
+}
+
+.main-header {
+  padding: var(--space-xx-small) 0 var(--space-x-small) 0;
+}
+
+.main-content {
+  flex: 1;
+  padding: var(--space-x-small) 0 var(--space-x-small) 0;
+
+  @nest :where(&) {
+
+    & a {
+      text-decoration: underline;
+      text-underline-offset: 0.1em;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.main-footer {
+  flex: 0;
+  padding: var(--space-x-small) 0 var(--space-xx-small) 0;
+  text-align: center;
+}
+
+.btn {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  min-width: 2rem;
+  padding: var(--space-xx-small) calc(var(--space-x-small) + 25px) var(--space-xx-small) var(--space-x-small);
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.25s;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &::after {
+    content: url('/img/next.svg');
+    margin-left: var(--space-xxx-small);
+    position: absolute;
+    top: 0.75rem;
+    transform: scale(0.7);
+
+    @media (min-width: 768px) {
+      top: 0.95rem;
+      transform: revert;
+    }
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1.25rem;
+  }
+}
+
+.btn-green {
+  background-color: var(--design-green);
+
+  &:hover {
+    background-color: #000;
+  }
+}
+
+.btn-black {
+  background-color: #000;
+
+  &:hover {
+    background-color: var(--design-green);
+  }
+}
+
+a {
+  transition: 0.25s;
+
+  &:hover {
+    color: var(--design-green);
+  }
+}
+
+img {
+  height: auto;
+  margin: auto;
+}

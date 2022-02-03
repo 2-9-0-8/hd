@@ -1,0 +1,30 @@
+.footer-content {
+
+  & .about-links {
+    font-size: var(--small-text-size);
+    margin-bottom: var(--space-xx-small);
+  }
+
+  & .social-links {
+    align-items: center;
+    display: flex;
+    font-size: var(--small-text-size);
+    gap: var(--space-xx-small);
+    justify-content: center;
+    margin-bottom: var(--space-xx-small);
+
+    & > li {
+      
+      & > a {
+        
+        & > svg {
+          transform: scale(0.75);
+        }
+      }
+    }
+  }
+
+  & .copyright {
+    font-size: var(--x-small-text-size);
+  }
+}

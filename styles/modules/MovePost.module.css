@@ -1,0 +1,50 @@
+.move {
+  display: flex;
+  padding-top: var(--space-x-small);
+
+  & .previous, & .next {
+    align-content: center;
+    display: flex;
+
+    & > span {
+
+      & > svg {
+        margin-top: 0.1em;
+      }
+    }
+
+    &:hover {
+
+      & > span {
+
+        & > svg {
+
+          fill: var(--design-green);
+        }
+      }
+    }
+  }
+
+  & .previous {
+
+      & > span {
+
+        & > svg {
+
+          margin-right: var(--space-xxx-small);
+          transform: rotate(180deg) scale(0.75);
+        }
+      }
+    }
+
+  & .next {
+    margin-left: auto;
+
+    & > span {
+
+      & > svg {
+        transform: scale(0.75);
+      }
+    }
+  }
+}

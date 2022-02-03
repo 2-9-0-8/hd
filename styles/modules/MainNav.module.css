@@ -1,0 +1,8 @@
+.main-nav {
+  display: flex;
+  gap: var(--space-xx-small);
+  grid-column: 3 / 3;
+  font-weight: bold;
+  justify-content: flex-end;
+  text-transform: uppercase;
+}

@@ -1,0 +1,45 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xx-small);
+
+  & > .image {
+    flex: 1; 
+    margin-bottom: var(--space-xx-small);
+    position: relative;
+  }
+
+  & > .content {
+    flex: 1;
+  
+    & > h1 {
+      margin-bottom: var(--space-xx-small);
+    }
+
+    & > div {
+    
+      & > p {
+        margin-bottom: var(--space-xx-small);
+      }
+
+      & > a {
+        font-weight: bold;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: var(--space-small);
+
+    & > .image {
+      margin-bottom: 0;
+    }
+
+    & > .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}

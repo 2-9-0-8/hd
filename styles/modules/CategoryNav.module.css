@@ -1,0 +1,14 @@
+.category-nav {
+  display: flex;
+  gap: var(--space-x-small);
+  justify-content: space-between;
+  margin: 0 auto var(--space-x-small) auto;
+  max-width: 40rem;
+  padding: 0 0.7em;
+  overflow-x: auto;
+
+  & > li > a {
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
