@@ -6,12 +6,10 @@ import styles from '@styles/modules/Post.module.css'
 import { CategoryNav } from '@components/includes'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
-import { Suspense } from 'react'
 
 const MovePost = dynamic(
-  () => import('@components/includes/MovePost'), {   
-    suspense: true,
-  }
+  () => import('@components/includes/MovePost'),
+  { loading: () => <p>Loading...</p> }
 )
 
 export default function Page() {
@@ -41,9 +39,7 @@ export default function Page() {
           </div>
         </article>
         
-        <Suspense fallback={`loading`}>
-          <MovePost />
-        </Suspense>
+        <MovePost />
       </Layout>
     </>
   )
