@@ -34,12 +34,12 @@ function Posts({
               >
                 <Link href={`/archive/${categorySlug}/${post.slug}`}>
                   <a>
-                    <img
+                    <Image
                       src={post?.featuredImage?.node?.sourceUrl()}
                       alt={post?.featuredImage?.node?.altText}
                       width={post?.featuredImage?.node?.mediaDetails?.width}
                       height={post?.featuredImage?.node?.mediaDetails?.height}
-                      //objectFit="contain"
+                      objectFit="contain"
                     />
                   </a>
                 </Link>
