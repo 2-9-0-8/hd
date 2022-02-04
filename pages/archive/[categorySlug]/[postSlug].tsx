@@ -1,6 +1,6 @@
 import Layout from '@components/layouts/Layout'
-import { getNextStaticProps, is404 } from '@faustjs/next'
-import { GetStaticPropsContext } from 'next'
+import { getNextServerSideProps, is404 } from '@faustjs/next'
+import { GetServerSidePropsContext } from 'next'
 import { client } from '@client'
 import styles from '@styles/modules/Post.module.css'
 import { CategoryNav } from '@components/includes'
@@ -45,17 +45,10 @@ export default function Page() {
   )
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
-  return getNextStaticProps(context, {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  return getNextServerSideProps(context, {
     Page,
     client,
     notFound: await is404(context, { client }),
   })
-}
-
-export function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: 'blocking',
-  }
 }
