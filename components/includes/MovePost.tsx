@@ -13,10 +13,12 @@ export default function MovePost() {
   const { posts } = client.useQuery()
   //const currentPaginationCursor = btoa( `arrayconnection:${post.databaseId}` )
 
-  const [currentPaginationCursor, setCurrentPaginationCursor] = useState(null);
+  //const [currentPaginationCursor, setCurrentPaginationCursor] = useState(null);
+
+  let currentPaginationCursor
 
   useEffect(() => {
-    setCurrentPaginationCursor(btoa( `arrayconnection:${post.databaseId}` ))
+    currentPaginationCursor = btoa( `arrayconnection:${post.databaseId}` )
   })
 
   const previous = posts({
