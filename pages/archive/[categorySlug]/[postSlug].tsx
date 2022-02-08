@@ -25,12 +25,12 @@ export default function Page() {
 
         <article className={styles.post}>
           <div className={styles.image}>
-            <Image
+            <img
               src={post?.featuredImage?.node?.sourceUrl()}
               alt={post?.featuredImage?.node?.altText}
               width={post?.featuredImage?.node?.mediaDetails?.width}
               height={post?.featuredImage?.node?.mediaDetails?.height}
-              objectFit="contain"
+              //objectFit="contain"
             />
           </div>
           <div className={styles.content}>

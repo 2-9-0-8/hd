@@ -3,6 +3,7 @@ import { client } from '@client'
 import { useRouter } from 'next/router'
 import styles from '@styles/modules/MovePost.module.css'
 import btoa from 'btoa'
+import { useEffect } from 'react'
 
 export default function MovePost() {
   const { usePost } = client
@@ -10,7 +11,14 @@ export default function MovePost() {
   const { query = {} } = useRouter()
   const { categorySlug } = query
   const { posts } = client.useQuery()
-  const currentPaginationCursor = btoa( `arrayconnection:${post.databaseId}` )
+  //const currentPaginationCursor = btoa( `arrayconnection:${post.databaseId}` )
+
+  let currentPaginationCursor
+
+  useEffect(() => {
+    currentPaginationCursor = btoa( `arrayconnection:${post.databaseId}` )
+
+  })
 
   const previous = posts({
     first: 1,
